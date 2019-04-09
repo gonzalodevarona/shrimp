@@ -57,48 +57,52 @@ public class  Main
 					System.out.print("Please type the new container's ID: "); String id = reader.nextLine();
 					System.out.print("Please type the new container's weight: "); double weight = reader.nextDouble(); reader.nextLine();
 					System.out.println("");
-					System.out.println("Select the new container's type: "); 
-					System.out.println("1. Dry van 20' ");
-					System.out.println("2. Dry van 40' ");
-					System.out.println("3. Tank");
-					System.out.print("Please type the number of your selection: "); int selection1 = reader.nextInt(); reader.nextLine();
 
-					
+					if(weight > 0){
+						System.out.println("Select the new container's type: "); 
+						System.out.println("1. Dry van 20' ");
+						System.out.println("2. Dry van 40' ");
+						System.out.println("3. Tank");
+						System.out.print("Please type the number of your selection: "); int selection1 = reader.nextInt(); reader.nextLine();
 
-					if(selection1 == 1 || selection1 == 2 || selection1 == 3){
-						char type = 'x';
+						
 
-						switch (selection1) {
-							case 1: type = 'a';
-								break;
-							case 2: type = 'b';
-								break;	
-							case 3: type = 't';
-								break;			
-						}
+						if(selection1 == 1 || selection1 == 2 || selection1 == 3){
+							char type = 'x';
 
-						System.out.println("");
-						System.out.println("Has the container left already?");
-						System.out.println("1. Yes");
-						System.out.println("2. No"); 
-						System.out.print("Please type the number of your selection: "); int selection = reader.nextInt(); reader.nextLine();
-
-						if(selection == 1 || selection == 2){
-							boolean arriving = true;
-
-							switch (selection) {
-								case 1: arriving = false;
-									break;		
+							switch (selection1) {
+								case 1: type = 'a';
+									break;
+								case 2: type = 'b';
+									break;	
+								case 3: type = 't';
+									break;			
 							}
 
-							System.out.print("Please type the new container's description: "); String description = reader.nextLine();
-							System.out.print("Please type how many days the new container has stayed in the dock: "); int days = reader.nextInt(); reader.nextLine();
-							use.addContainer(id, weight, type, description, arriving, days);
-								
-						
-						} else{System.out.println("ERROR: Invalid selection");}			
+							System.out.println("");
+							System.out.println("Has the container left already?");
+							System.out.println("1. Yes");
+							System.out.println("2. No"); 
+							System.out.print("Please type the number of your selection: "); int selection = reader.nextInt(); reader.nextLine();
 
-					} else{System.out.println("ERROR: Invalid selection");}
+							if(selection == 1 || selection == 2){
+								boolean arriving = true;
+
+								switch (selection) {
+									case 1: arriving = false;
+										break;		
+								}
+
+								System.out.print("Please type the new container's description: "); String description = reader.nextLine();
+								System.out.print("Please type how many days the new container has stayed in the dock: "); int days = reader.nextInt(); reader.nextLine();
+								use.addContainer(id, weight, type, description, arriving, days);
+									
+							
+							} else{System.out.println("ERROR: Invalid selection");}			
+
+						} else{System.out.println("ERROR: Invalid selection");}
+
+					} else{System.out.println("ERROR: Invalid weight");}
 
 
 
@@ -118,7 +122,7 @@ public class  Main
 					break;
 				case 3: 
 					System.out.println("");
-					System.out.println("Number of tank containers that are leaving: "+use.requestTankContainerAmount());
+					System.out.println("Number of tank containers that are arriving: "+use.requestTankContainerAmount());
 					System.out.println("");
 					break;
 				case 4:
